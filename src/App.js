@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import { Route, Switch } from "react-router-dom";
-import Truck from "./componects/Truck";
+import Main from "./main"
 const App = () => (
   <Switch>
-    <Route exact path="/" component={Truck} />
+    <Route exact path="/" component={Main} />
   </Switch>
 );
 export default App;
