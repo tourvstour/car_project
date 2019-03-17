@@ -77,7 +77,6 @@ class CarType extends Component {
             </Col>
           ))}
         </Row>
-        {console.log(this.state.carType, this.state.carSpec)}
       </div>
     );
   }

@@ -14,7 +14,6 @@ class Promote extends Component {
             <img src="https://www.tqm.co.th/gallery/2410.jpg" width="250" />
           </div>
         </Carousel>
-        ,
       </div>
     );
   }
