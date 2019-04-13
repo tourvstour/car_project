@@ -13,7 +13,7 @@ class CarType extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://192.168.101.240:9091/api/show_menu.php")
+    fetch("http://183.88.219.85:7073/api/show_menu.php")
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -21,28 +21,6 @@ class CarType extends Component {
         });
       });
   }
-
-  onMouseEnter = e => {
-    fetch("http://192.168.101.240:9091/api/show_spec.php", {
-      method: "POST",
-      body: JSON.stringify({
-        id: e
-      })
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res === null) {
-          this.setState({
-            spec: []
-          });
-        } else {
-          this.setState({
-            spec: res,
-            carType: e
-          });
-        }
-      });
-  };
   onClick = e => {
     console.log(e);
     this.setState({
@@ -57,22 +35,16 @@ class CarType extends Component {
           {this.state.cars.map(a => (
             <Col lg={{ span: 6 }}>
               <Card style={{ width: "auto", borderRadius: "10px" }}>
-                <img src={a.img} width="250" height="auto" />
+                <img src={a.img} style={{ display: "block", width: "250px", height: "150px" }} />
                 <Menu
                   item="1"
                   mode="horizontal"
-                  onMouseEnter={() =>
-                    this.onMouseEnter(
-                      a.car_type_id,
-                      this.state.spec.map(m => m.car_type_spec_id)
-                    )
-                  }
                   onClick={this.onClick}
                 >
                   <SubMenu title={a.t_name} style={{ fontSize: "20px" }}>
                     <MenuItemGroup title={a.t_name}>
-                      {this.state.spec.map(b => (
-                        <Menu.Item key={b.car_type_spec_id} >
+                      {a.sub.map(b => (
+                        <Menu.Item key={b.car_type_spec_id}>
                           {b.spec_name_th}
                         </Menu.Item>
                       ))}
