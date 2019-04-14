@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Upload, Input, Select } from "antd";
+import { Form, Upload, Input, Select, Button } from "antd";
 
 const Option = Select;
 const formItemLayout = {
@@ -13,10 +13,18 @@ const formItemLayout = {
   }
 };
 class AddCars extends Component {
+  Submit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+  }
   render() {
     return (
       <div>
-        <Form {...formItemLayout}>
+        <Form {...formItemLayout} onSubmit={this.Submit}>
           <Form.Item label="ประเภทรถ">
             <Input id="typeCar" />
           </Form.Item>
@@ -58,8 +66,9 @@ class AddCars extends Component {
             <Input />
           </Form.Item>
           <Form.Item label="สี">
-            <Input />
+            <Input id="s"/>
           </Form.Item>
+          <Button htmlType="submit">บันทึก</Button>
         </Form>
       </div>
     );

@@ -19,20 +19,18 @@ class CarSale extends Component {
               <Card style={{ borderRadius: "10px" }}>
                 <Row gutter={8}>
                   <Col lg={{ span: 8 }}>
-                    <Card style={{ height: "150px", width: "auto" }}>
-                      <img
-                        src="https://www.tqm.co.th/gallery/2410.jpg"
-                        style={{ height: "auto", width: "100%" }}
-                      />
-                    </Card>
+                    <img
+                      src="https://www.tqm.co.th/gallery/2410.jpg"
+                      style={{ height: "auto", width: "100%" }}
+                    />
                   </Col>
                   <Col style={{ fontSize: "15px" }} lg={{ offset: 1 }}>
-                    <h1 style={{ color: "red" }}>
+                    <h3 style={{ color: "red" }}>
                       {a.year} {a.brand} {a.serie} {a.serieDescription}{" "}
                       {a.serieType}
-                    </h1>
+                    </h3>
                     <div style={{ fontSize: "20px" }}>
-                      <h1>{`ราคา ${a.price} บาท`}</h1>
+                      <h3>{`ราคา ${a.price} บาท`}</h3>
                     </div>
                   </Col>
                 </Row>

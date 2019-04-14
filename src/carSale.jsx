@@ -10,9 +10,9 @@ class carSale extends Component {
     render() {
         return (
             <Layout style={{ fontFamily: "'Kanit', sans-serif" }}>
-                <Header style={{ backgroundColor: "#FDEBD0" }} >
-                    <Nav />
-                </Header>
+
+                <Nav />
+
                 <Content>
                     <Card>
                         <CarSale />
