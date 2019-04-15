@@ -9,7 +9,7 @@ class Promote extends Component {
           <img src="https://www.tqm.co.th/gallery/2410.jpg"  style={{  display: "block",marginLeft: "auto",marginRight:"auto"}}  />
         </div>
         <div>
-          <img src="https://www.tqm.co.th/gallery/2410.jpg" style={{  display: "block",marginLeft: "auto",marginRight:"auto"}}/>
+          <img src="https://assets.cvnaassets.com/home-assets/test-own-car.png" style={{  display: "block",marginLeft: "auto",marginRight:"auto"}}/>
         </div>
       </Carousel>
 
