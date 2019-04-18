@@ -33,7 +33,8 @@ class AddCars extends Component {
         multiple: true,
         action: false
       },
-      filesList: []
+      fileList: [],
+      uploading: false
     }
   }
   componentDidMount() {
@@ -127,6 +128,9 @@ class AddCars extends Component {
 
   Uploads = (e) => {
     console.log(e.fileList)
+    this.setState({
+      filesList: e
+    })
   }
 
   Save = () => {
@@ -143,9 +147,60 @@ class AddCars extends Component {
       mile: document.getElementById('mile').value,
       color: document.getElementById('color').value
     }]
-    console.log(data)
+    data.forEach(element => {
+      if (element.brand === "" || element.serie === "" || element.serie_types === "" || element.serie_descriptions === "" || element.gear === "" || element.type_car === ""
+        || element.year === "" || element.engine === "" || element.seat === "" || element.mile === "" || element.color === "") {
+        console.log("ระบุข้อมูลให้ครบก่อนทำการบันทึก")
+      }
+      else { }
+      let fileList = this.state.fileList;
+      let formData = new FormData();
+      fileList.forEach(file => {
+        formData.append("files[]", file);
+        formData.append("fileName", 'aaa');
+      });
+
+      fetch("http://183.88.219.85:7073/api/save_img.php", {
+        method: "POST",
+        body: formData
+      })
+    });
+  }
+  Img = () => {
+    let fileList = this.state.fileList;
+    let formData = new FormData();
+    fileList.forEach(file => {
+      formData.append("files[]", file);
+      formData.append("fileName", '');
+    });
+
+    fetch("http://183.88.219.85:7073/api/save_img.php", {
+      method: "POST",
+      body: formData
+
+    })
   }
   render() {
+    const { uploading, fileList } = this.state;
+    const props = {
+      onRemove: file => {
+        this.setState(state => {
+          const index = state.fileList.indexOf(file);
+          const newFileList = state.fileList.slice();
+          newFileList.splice(index, 1);
+          return {
+            fileList: newFileList
+          };
+        });
+      },
+      beforeUpload: file => {
+        this.setState(state => ({
+          fileList: [...state.fileList, file]
+        }));
+        return false;
+      },
+      fileList
+    };
     return (
       <div>
         <Form {...formItemLayout} >
@@ -205,13 +260,13 @@ class AddCars extends Component {
           <Button onClick={this.Save}>บันทึก</Button>
         </Form>
         <Upload
-          action="false"
+          {...props}
           listType="picture-card"
           multiple="true"
-          onChange={this.Uploads}
         >
           <Button>uplode</Button>
         </Upload>
+        <Button onClick={this.Img}>Test</Button>
       </div>
     );
   }
