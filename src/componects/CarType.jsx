@@ -13,7 +13,7 @@ class CarType extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://183.88.219.85:7073/api/show_menu.php")
+    fetch("http://183.88.219.85:9091/api/show_menu.php")
       .then(res => res.json())
       .then(res => {
         this.setState({

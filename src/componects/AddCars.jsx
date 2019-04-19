@@ -39,7 +39,7 @@ class AddCars extends Component {
     }
   }
   componentDidMount() {
-    fetch("http://183.88.219.85:7073/api/topic_admin.php", {
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
         type: "brandCar"
@@ -51,7 +51,7 @@ class AddCars extends Component {
           brandCar: brandCar
         })
       })
-    fetch("http://183.88.219.85:7073/api/topic_admin.php", {
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
         type: "serie"
@@ -63,7 +63,7 @@ class AddCars extends Component {
           serie: serie
         })
       })
-    fetch("http://183.88.219.85:7073/api/topic_admin.php", {
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
         type: "serieType"
@@ -75,7 +75,7 @@ class AddCars extends Component {
           serieType: serieType
         })
       })
-    fetch("http://183.88.219.85:7073/api/topic_admin.php", {
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
         type: "serieDescription"
@@ -87,7 +87,7 @@ class AddCars extends Component {
           serieDescription: serieDescription
         })
       })
-    fetch("http://183.88.219.85:7073/api/topic_admin.php", {
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
         type: "gear"
@@ -156,7 +156,7 @@ class AddCars extends Component {
       }
     });
 
-    fetch("http://183.88.219.85:7073/api/save_cars.php", {
+    fetch("http://183.88.219.85:9091/api/save_cars.php", {
       method: "POST",
       body: JSON.stringify({
         data: data
@@ -177,7 +177,7 @@ class AddCars extends Component {
             formData.append("fileName", 'cars')
           })
 
-          fetch("http://183.88.219.85:7073/api/save_img.php", {
+          fetch("http://183.88.219.85:9091/api/save_img.php", {
             method: "POST",
             body: formData
           })

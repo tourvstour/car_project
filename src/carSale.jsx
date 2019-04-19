@@ -9,28 +9,19 @@ const { Header, Content, Footer } = Layout;
 class carSale extends Component {
     render() {
         return (
-            <Layout style={{ fontFamily: "'Kanit', sans-serif" }}>
-
-                <Nav />
-
-                <Content>
+            <div>
+                <div style={{ fontFamily: "'Kanit', sans-serif" }}>
+                    <Nav />
+                </div>
+                <div>
                     <Card>
                         <CarSale />
                     </Card>
-                </Content>
-                <Footer
-                    style={{
-                        textAlign: "center",
-                        backgroundColor: "#FDEBD0",
-                        width: "100%",
-                        fontSize: "15px",
-                        position: "",
-                        bottom: 0
-                    }}
-                >
+                </div>
+                <div>
                     <Footers />
-                </Footer>
-            </Layout>
+                </div>
+            </div >
         );
     }
 }
