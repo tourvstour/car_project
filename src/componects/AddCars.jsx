@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Upload, Input, Select, Button, Icon, message } from "antd";
+import { from } from "rxjs";
 
 const Option = Select.Option;
 const formItemLayout = {
@@ -145,41 +146,49 @@ class AddCars extends Component {
       engine: document.getElementById('engine').value,
       seat: document.getElementById('seat').value,
       mile: document.getElementById('mile').value,
-      color: document.getElementById('color').value
+      color: document.getElementById('color').value,
+      price: document.getElementById('price').value
     }]
     data.forEach(element => {
       if (element.brand === "" || element.serie === "" || element.serie_types === "" || element.serie_descriptions === "" || element.gear === "" || element.type_car === ""
-        || element.year === "" || element.engine === "" || element.seat === "" || element.mile === "" || element.color === "") {
+        || element.year === "" || element.engine === "" || element.seat === "" || element.mile === "" || element.color === "" || element.price === "") {
         console.log("ระบุข้อมูลให้ครบก่อนทำการบันทึก")
       }
-      else { }
-      let fileList = this.state.fileList;
-      let formData = new FormData();
-      fileList.forEach(file => {
-        formData.append("files[]", file);
-        formData.append("fileName", 'aaa');
-      });
-
-      fetch("http://183.88.219.85:7073/api/save_img.php", {
-        method: "POST",
-        body: formData
-      })
-    });
-  }
-  Img = () => {
-    let fileList = this.state.fileList;
-    let formData = new FormData();
-    fileList.forEach(file => {
-      formData.append("files[]", file);
-      formData.append("fileName", '');
     });
 
-    fetch("http://183.88.219.85:7073/api/save_img.php", {
+    fetch("http://183.88.219.85:7073/api/save_cars.php", {
       method: "POST",
-      body: formData
-
+      body: JSON.stringify({
+        data: data
+      })
     })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res.map(a => a.stat))
+        let car_id = res.map(a => a.car_id),
+          stat = res.map(a => a.stat).toString()
+        if (stat === "200") {
+          let fileList = this.state.fileList
+          let formData = new FormData()
+
+          fileList.forEach(file => {
+            formData.append("files[]", file)
+            formData.append("car_id", car_id)
+            formData.append("fileName", 'cars')
+          })
+
+          fetch("http://183.88.219.85:7073/api/save_img.php", {
+            method: "POST",
+            body: formData
+          })
+        }
+        else {
+          console.log("aaa")
+        }
+      })
+
   }
+
   render() {
     const { uploading, fileList } = this.state;
     const props = {
@@ -257,16 +266,18 @@ class AddCars extends Component {
           <Form.Item label="สี">
             <Input id="color" />
           </Form.Item>
+          <Form.Item label="ราคา">
+            <Input id="price" />
+          </Form.Item>
+          <Upload
+            {...props}
+            listType="picture-card"
+            multiple="true"
+          >
+            <Button>uplode</Button>
+          </Upload>
           <Button onClick={this.Save}>บันทึก</Button>
         </Form>
-        <Upload
-          {...props}
-          listType="picture-card"
-          multiple="true"
-        >
-          <Button>uplode</Button>
-        </Upload>
-        <Button onClick={this.Img}>Test</Button>
       </div>
     );
   }

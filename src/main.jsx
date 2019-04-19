@@ -4,6 +4,7 @@ import CarType from "./componects/CarType";
 import Promote from "./componects/Promote";
 import Footers from "./componects/Footer";
 import Nav from "./componects/Nav";
+import Logo from "./componects/Logo"
 
 
 class Main extends Component {
@@ -14,7 +15,7 @@ class Main extends Component {
             <Nav />
         </div>
         <div>
-          <Promote />
+          <Logo />
           <Card style={{borderColor:"#ffffff"}}>
             <CarType />
           </Card>
