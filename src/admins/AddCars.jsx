@@ -180,6 +180,8 @@ class AddCars extends Component {
           fetch("http://183.88.219.85:9091/api/save_img.php", {
             method: "POST",
             body: formData
+          }).then(next => {
+            window.location.href = `/set_img?id=${car_id}`
           })
         }
         else {
@@ -223,7 +225,7 @@ class AddCars extends Component {
               ))}
             </Select>
           </Form.Item>
-          <Form.Item label="รุ่น">
+          <Form.Item label="รุ่น" >
             <Select onChange={this.Serie}>
               {this.state.serie.map(a => (
                 <Option value={a.product_serie_id}>{a.product_serie_description}</Option>

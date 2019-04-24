@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import AddCars from "./componects/AddCars"
+import AddCars from "./admins/AddCars"
 
-class Administrator extends Component{
-    render(){
-        return<div>
+class Administrator extends Component {
+    render() {
+        return <div>
             <AddCars />
         </div>
     }
