@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Car from "./car.json";
 import { Card, Row, Col } from "antd";
-import { from } from "rxjs";
+
 
 class CarSale extends Component {
   constructor() {
@@ -10,13 +10,24 @@ class CarSale extends Component {
       profile: Car
     };
   }
+
+  componentDidMount() {
+    let url = window.location.search.split("&"),
+      type = url[1].toString().split("type=")[1],
+      spec = url[2].toString().split("spec=")[1]
+    console.log(type, spec)
+  }
+
+  Car =(e)=>{
+    console.log(e)
+  }
   render() {
     return (
       <div>
         {this.state.profile.map(a => (
           <div>
             <Col lg={{ span: 14, offset: 2 }}>
-              <Card style={{ borderRadius: "10px" }}>
+              <Card style={{ borderRadius: "10px" }} hoverable onClick={()=>this.Car(a.carId)}>
                 <Row gutter={8}>
                   <Col lg={{ span: 8 }}>
                     <img
@@ -40,7 +51,6 @@ class CarSale extends Component {
             <br />
           </div>
         ))}
-        {console.log(this.state.profile)}
       </div>
     );
   }
