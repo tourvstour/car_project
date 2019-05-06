@@ -24,11 +24,15 @@ class AddCars extends Component {
       serieType: [],
       serieDescription: [],
       gear: [],
+      type: [],
+      typeSpec: [],
       brand: "",
       series: "",
       serieTypes: "",
       serieDescriptions: "",
       gears: "",
+      types: "",
+      typeSpecs: "",
       uploadProps: {
         name: 'file',
         multiple: true,
@@ -99,6 +103,30 @@ class AddCars extends Component {
           gear: gear
         })
       })
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
+      method: "POST",
+      body: JSON.stringify({
+        type: "type"
+      })
+    })
+      .then(type => type.json())
+      .then(type => {
+        this.setState({
+          type: type
+        })
+      })
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
+      method: "POST",
+      body: JSON.stringify({
+        type: "typeSpecs"
+      })
+    })
+      .then(typeSpec => typeSpec.json())
+      .then(typeSpec => {
+        this.setState({
+          typeSpec: typeSpec
+        })
+      })
   }
 
   BranCar = (e) => {
@@ -127,6 +155,18 @@ class AddCars extends Component {
     })
   }
 
+  type =(e)=>{
+    this.setState({
+      types:e
+    })
+  }
+
+  typeSpec=(e)=>{
+    this.setState({
+      typeSpecs:e
+    })
+  }
+
   Uploads = (e) => {
     console.log(e.fileList)
     this.setState({
@@ -136,6 +176,8 @@ class AddCars extends Component {
 
   Save = () => {
     let data = [{
+      types:this.state.types,
+      typeSpecs:this.state.typeSpecs,
       brand: this.state.brand,
       serie: this.state.series,
       serie_types: this.state.serieTypes,
@@ -215,8 +257,22 @@ class AddCars extends Component {
     return (
       <div>
         <Form {...formItemLayout} >
-          <Form.Item label="ประเภทรถ">
+          <Form.Item label="รายละเอียดรถ">
             <Input id="typeCar" />
+          </Form.Item>
+          <Form.Item label="รถ">
+            <Select onChange={this.type}>
+              {this.state.type.map(a => (
+                <Option value={a.car_type_id}>{a.nick_name}</Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item label="ประเภทรถ">
+            <Select onChange={this.typeSpec}>
+              {this.state.typeSpec.map(a => (
+                <Option value={a.car_type_spec_id}>{a.spec_name_th}</Option>
+              ))}
+            </Select>
           </Form.Item>
           <Form.Item label="ยี้ห้อ">
             <Select onChange={this.BranCar}>

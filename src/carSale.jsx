@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Card, Col, Icon, Row, Layout, Menu, Breadcrumb } from "antd";
-import CarType from "./componects/CarType";
 import CarSale from "./componects/CarSale";
 import Footers from "./componects/Footer";
 import Nav from "./componects/Nav"

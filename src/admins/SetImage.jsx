@@ -69,9 +69,7 @@ class Setimage extends Component {
                         <h4>รูปหน้าปก</h4>
                         <Button onClick={this.Update}>Update</Button>
                     </Card>
-
                     <Card style={{ textAlign: "center" }}>
-
                         {this.state.img.map(a => (
                             <Col lg={{ span: "4" }}>
                                 <Card hoverable
@@ -83,7 +81,6 @@ class Setimage extends Component {
                                 <br />
                             </Col>
                         ))}
-
                     </Card>
                 </Col>
             </div>
