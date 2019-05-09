@@ -4,6 +4,7 @@ import Main from "./main";
 import carSale from "./carSale";
 import SetImage from "./admins/SetImage"
 import Administrator from "./Administrator";
+import CarProfile from "./componects/CarProfile";
 
 const App = () => (
   <Switch>
@@ -11,6 +12,7 @@ const App = () => (
     <Route path="/sale" component={carSale} />
     <Route path="/admin" component={Administrator} />
     <Route path="/set_img" component={SetImage} />
+    <Route path="/car_pro" component={CarProfile} />
   </Switch>
 );
 export default App;

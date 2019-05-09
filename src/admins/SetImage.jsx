@@ -61,7 +61,6 @@ class Setimage extends Component {
         return (
             <div>
                 <Col lg={{ span: "20", offset: "2" }}>
-
                     <Card hoverable style={{ height: "480px", width: "auto", textAlign: "center" }}>
                         <img src={`/api/img/${this.state.imgSelect}`} style={{ height: "350px", width: "auto" }} />
                         <br />
