@@ -13,7 +13,7 @@ class Nav extends Component {
 
                     <ul className="navbar-nav mr-auto">
                         <div style={{ fontSize: "24px" }}>
-
+                            <a href="/admin">เพิ่มรถ</a>
                         </div>
                     </ul>
 
