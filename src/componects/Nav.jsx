@@ -2,26 +2,20 @@ import React, { Component } from "react";
 
 class Nav extends Component {
     render() {
-        return (
-
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="/"> <img src="/img/img_logo/restaurant10.jpg" style={{ display: "block", marginLeft: "auto", marginRight: "auto", height: "80px", }} /></a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+        return (<div className="navB">
+            <nav class="navbar navbar-expand-lg nav justify-content-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul className="navbar-nav mr-auto">
-                        <div style={{ fontSize: "24px" }}>
-                            <a href="/admin">เพิ่มรถ</a>
-                        </div>
-                    </ul>
-
-                    <div>
-                        <input className="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search" />
+                <img src="https://www.toyota.co.th/default/assets/img/bg/logo__toyota.png"  />
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <div class="bg-dark p-4">
+                        <h5 class="text-white h4">Collapsed content</h5>
+                        <span class="text-muted">Toggleable via the navbar brand.</span>
                     </div>
                 </div>
             </nav>
+        </div>
         )
     }
 }

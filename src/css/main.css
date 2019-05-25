@@ -1,0 +1,9 @@
+.bodys{
+    background-color: aqua
+}
+
+.foot{
+    display : table-row;
+    vertical-align : bottom;
+    height : 1px;
+}

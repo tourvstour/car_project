@@ -6,23 +6,24 @@ import Footers from "./componects/Footer";
 import Nav from "./componects/Nav";
 import Logo from "./componects/Logo"
 
-
 class Main extends Component {
   render() {
     return (
-      <div>
+      <div className="bodys">
+      <Row  >
         <div style={{ fontFamily: "'Kanit', sans-serif" }}>
-            <Nav />
+          <Nav />
         </div>
-        <div>
-          <Logo />
-          <Card style={{borderColor:"#ffffff"}}>
+        <Col lg={{ span: 20, offset: 2 }}>
+          <div >
+            <Promote />
+            <br />
             <CarType />
-          </Card>
-        </div>
-        <div>
-          <Footers />
-        </div>
+          </div>
+        </Col>
+      <br />
+        <Footers />
+      </Row>
       </div>
     );
   }

@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-
-class Footer extends Component{
-    render(){
-        return(<div>
-            <h3>ที่อยู่:</h3>
-            <h3>fb:</h3>
-            <h3>line:</h3>
-            <h3>page:</h3>
-        </div>)
+import { Card, Col, Icon } from 'antd'
+class Footer extends Component {
+    render() {
+        return (
+                <Col lg={{ span: 24 }}>
+                <br/>
+                    <Card>
+                        <h3>line:@toyotacontact</h3>
+                        <h3>email:contactcenter@toyota.co.th</h3>
+                        <div className="icons-list">
+                            <Icon style={{ fontSize: "80px" }} type="facebook" />
+                            <Icon style={{ fontSize: "80px" }} type="google" />
+                            <Icon style={{ fontSize: "80px" }} type="twitter" />
+                        </div>
+                    </Card>
+                </Col>
+        )
     }
 }
 export default Footer;

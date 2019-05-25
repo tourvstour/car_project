@@ -1,0 +1,13 @@
+.bodys{
+    background-color: rgba(0, 255, 255, 0.1);
+    min-height: 100%;
+    height:100% ;
+}
+
+.foot{
+    position: static;
+    vertical-align : bottom;
+}
+.navB{
+    background-color: rgba(3, 14, 14, 0.685)
+}
