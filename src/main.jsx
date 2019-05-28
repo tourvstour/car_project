@@ -10,20 +10,20 @@ class Main extends Component {
   render() {
     return (
       <div className="bodys">
-      <Row  >
-        <div style={{ fontFamily: "'Kanit', sans-serif" }}>
-          <Nav />
-        </div>
-        <Col lg={{ span: 20, offset: 2 }}>
-          <div >
-            <Promote />
-            <br />
-            <CarType />
+        <Row  >
+          <div style={{ fontFamily: "'Kanit', sans-serif" }}>
+            <Nav />
           </div>
-        </Col>
-      <br />
-        <Footers />
-      </Row>
+          <Col lg={{ span: 20, offset: 2 }}>
+            <div >
+              <Promote />
+              <br />
+              <CarType />
+            </div>
+          </Col>
+          <br />
+          <Footers />
+        </Row>
       </div>
     );
   }

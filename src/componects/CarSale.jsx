@@ -43,7 +43,8 @@ class CarSale extends Component {
         {this.state.profile.map(a => (
           <div>
             <Col lg={{ span: 14, offset: 2 }}>
-              <Card style={{ borderRadius: "10px" }} >
+              <Card style={{ borderRadius: "10px" }}
+              >
                 <Row gutter={8}>
                   <Col lg={{ span: 8 }}>
                     <img
