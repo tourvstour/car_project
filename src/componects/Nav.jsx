@@ -7,7 +7,7 @@ class Nav extends Component {
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <img src="https://www.toyota.co.th/default/assets/img/bg/logo__toyota.png"  />
+                <a href="/"> <img src="https://www.toyota.co.th/default/assets/img/bg/logo__toyota.png" /></a>
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4">
                         <h5 class="text-white h4">Collapsed content</h5>

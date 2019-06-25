@@ -5,7 +5,9 @@ class Logo extends Component {
         return (
             <Carousel autoplay >
                 <div>
-                    <img src="/img/img_logo/restaurant10.jpg" style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} />
+                    <a>
+                        <img src="/img/img_logo/restaurant10.jpg" style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} />
+                    </a>
                 </div>
             </Carousel>
         );

@@ -24,6 +24,7 @@ class AddCars extends Component {
       serieType: [],
       serieDescription: [],
       gear: [],
+      fuels: [],
       type: [],
       typeSpec: [],
       brand: "",
@@ -31,6 +32,7 @@ class AddCars extends Component {
       serieTypes: "",
       serieDescriptions: "",
       gears: "",
+      fuel: "",
       types: "",
       typeSpecs: "",
       uploadProps: {
@@ -43,6 +45,7 @@ class AddCars extends Component {
     }
   }
   componentDidMount() {
+
     fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
@@ -106,7 +109,7 @@ class AddCars extends Component {
     fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
-        type: "type"
+        type: "car_type"
       })
     })
       .then(type => type.json())
@@ -115,16 +118,17 @@ class AddCars extends Component {
           type: type
         })
       })
+
     fetch("http://183.88.219.85:9091/api/topic_admin.php", {
       method: "POST",
       body: JSON.stringify({
-        type: "typeSpecs"
+        type: "fuel"
       })
     })
-      .then(typeSpec => typeSpec.json())
-      .then(typeSpec => {
+      .then(fuel => fuel.json())
+      .then(fuel => {
         this.setState({
-          typeSpec: typeSpec
+          fuels: fuel
         })
       })
   }
@@ -155,15 +159,35 @@ class AddCars extends Component {
     })
   }
 
-  type =(e)=>{
+  Fuel = (e) => {
     this.setState({
-      types:e
+      fuel: e
     })
   }
 
-  typeSpec=(e)=>{
+  type = (e) => {
+    //console.log(e)
     this.setState({
-      typeSpecs:e
+      types: e
+    })
+    fetch("http://183.88.219.85:9091/api/topic_admin.php", {
+      method: "POST",
+      body: JSON.stringify({
+        type: "car_spec",
+        id: e
+      })
+    })
+      .then(typeSpec => typeSpec.json())
+      .then(typeSpec => {
+        this.setState({
+          typeSpec: typeSpec,
+        })
+      })
+  }
+
+  typeSpec = (e) => {
+    this.setState({
+      typeSpecs: e
     })
   }
 
@@ -176,13 +200,14 @@ class AddCars extends Component {
 
   Save = () => {
     let data = [{
-      types:this.state.types,
-      typeSpecs:this.state.typeSpecs,
+      types: this.state.types,
+      typeSpecs: this.state.typeSpecs,
       brand: this.state.brand,
       serie: this.state.series,
       serie_types: this.state.serieTypes,
       serie_descriptions: this.state.serieDescriptions,
       gear: this.state.gears,
+      fuel: this.state.fuel,
       type_car: document.getElementById('typeCar').value,
       year: document.getElementById('year').value,
       engine: document.getElementById('engine').value,
@@ -193,7 +218,7 @@ class AddCars extends Component {
     }]
     data.forEach(element => {
       if (element.brand === "" || element.serie === "" || element.serie_types === "" || element.serie_descriptions === "" || element.gear === "" || element.type_car === ""
-        || element.year === "" || element.engine === "" || element.seat === "" || element.mile === "" || element.color === "" || element.price === "") {
+        || element.year === "" || element.engine === "" || element.seat === "" || element.mile === "" || element.color === "" || element.price === "" || element.fuel === "") {
         console.log("ระบุข้อมูลให้ครบก่อนทำการบันทึก")
       }
     });
@@ -261,42 +286,42 @@ class AddCars extends Component {
             <Input id="typeCar" />
           </Form.Item>
           <Form.Item label="รถ">
-            <Select onChange={this.type}>
+            <Select onSelect={this.type}>
               {this.state.type.map(a => (
                 <Option value={a.car_type_id}>{a.nick_name}</Option>
               ))}
             </Select>
           </Form.Item>
           <Form.Item label="ประเภทรถ">
-            <Select onChange={this.typeSpec}>
+            <Select onSelect={this.typeSpec}>
               {this.state.typeSpec.map(a => (
                 <Option value={a.car_type_spec_id}>{a.spec_name_th}</Option>
               ))}
             </Select>
           </Form.Item>
           <Form.Item label="ยี้ห้อ">
-            <Select onChange={this.BranCar}>
+            <Select onSelect={this.BranCar}>
               {this.state.brandCar.map(a => (
                 <Option value={a.product_brand_id}>{a.product_brand_description}</Option>
               ))}
             </Select>
           </Form.Item>
           <Form.Item label="รุ่น" >
-            <Select onChange={this.Serie}>
+            <Select onSelect={this.Serie}>
               {this.state.serie.map(a => (
                 <Option value={a.product_serie_id}>{a.product_serie_description}</Option>
               ))}
             </Select>
           </Form.Item>
           <Form.Item label="โฉมยนต์">
-            <Select onChange={this.serieType}>
+            <Select onSelect={this.serieType}>
               {this.state.serieType.map(a => (
                 <Option value={a.product_serie_type_id}>{a.product_serie_type_description}</Option>
               ))}
             </Select>
           </Form.Item>
           <Form.Item label="รายละเอียดรุ่น">
-            <Select onChange={this.serieDescription}>
+            <Select onSelect={this.serieDescription}>
               {this.state.serieDescription.map(a => (
                 <Option value={a.product_serie_description_id}>{a.product_serie_description_description}</Option>
               ))}
@@ -309,9 +334,16 @@ class AddCars extends Component {
             <Input id="engine" />
           </Form.Item>
           <Form.Item label="ระบบเกียร์">
-            <Select onChange={this.Gear}>
+            <Select onSelect={this.Gear}>
               {this.state.gear.map(a => (
                 <Option value={a.product_gear_id}>{a.product_gear_description}</Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item label="เชื้อเพลิง">
+            <Select onSelect={this.Fuel}>
+              {this.state.fuels.map(a => (
+                <Option value={a.fuel_id}>{a.fuel_name_th}</Option>
               ))}
             </Select>
           </Form.Item>

@@ -62,7 +62,6 @@ class CarType extends Component {
           </Col>
         ))}
       </Row>
-
     );
   }
 }
